@@ -1,0 +1,65 @@
+*
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	box-sizing: border-box
+	&:before, &:after
+		-webkit-box-sizing: border-box
+		-moz-box-sizing: border-box
+		box-sizing: border-box
+
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: #666
+body input:required:valid,
+body textarea:required:valid
+	color: #666
+html, body
+	height: 100%
+body
+	font-size: 1rem
+	min-width: 320px
+	position: relative
+	line-height: 1.6
+	font-family: $default-font
+	overflow-x: hidden
+	opacity: 1
+p
+	font-family: $secondary-font
+/* footer к низу окна браузера */
+body
+	display: flex
+	flex-direction: column
+	height: 100%	
+.wrapper
+	flex: 1 0 auto
+footer
+	flex: 0 0 auto
+/*end footer к низу окна браузера */
+a
+	&:hover
+		transition: all .1s ease-in-out;
+.content
+	border-top: 1px solid $gray-200
+.breadcrumb
+	margin-bottom: 0
+	padding: .5rem
+	background-color: transparent
+	border-radius: 0
+/*-------------------------------------------------------*/
+

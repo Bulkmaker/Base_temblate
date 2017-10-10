@@ -17,8 +17,8 @@ function new_excerpt_length($length) {
 add_filter('excerpt_length', 'new_excerpt_length');
 
 add_theme_support('post-thumbnails'); // включаем поддержку миниатюр
-set_post_thumbnail_size(250, 150); // задаем размер миниатюрам 250x150
-add_image_size('big-thumb', 400, 400, true); // добавляем еще один размер картинкам 400x400 с обрезкой
+set_post_thumbnail_size(200, 150); // задаем размер миниатюрам 250x150
+add_image_size('big-thumb', 600, 400, true); // добавляем еще один размер картинкам 400x400 с обрезкой
 
 register_sidebar(array( // регистрируем левую колонку, этот кусок можно повторять для добавления новых областей для виджитов
 	'name' => 'Сайдбар', // Название в админке
@@ -35,7 +35,7 @@ if (!function_exists('add_scripts')) { // если ф-я уже есть в до
 	function add_scripts() { // добавление скриптов
 	    if(is_admin()) return false; // если мы в админке - ничего не делаем
 	    // wp_deregister_script('jquery'); // выключаем стандартный jquery
-	    wp_enqueue_script('bootstrap', get_template_directory_uri().'/js/scripts.min.js','','',true); // бутстрап
+	    wp_enqueue_script('scripts', get_template_directory_uri().'/js/scripts.min.js','','',true); // скрипты
 	}
 }
 

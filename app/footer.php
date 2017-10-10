@@ -1,3 +1,4 @@
+</div>
 <footer>
 	<div class="container">
 		<div class="row">
@@ -30,3 +31,6 @@
 		</div>
 	</div>
 </footer>
+<?php wp_footer(); // необходимо для работы плагинов и функционала  ?>
+</body>
+</html>
