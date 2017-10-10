@@ -1,18 +1,18 @@
-var gulp           = require('gulp'),
-		gutil          = require('gulp-util' ),
-		sass           = require('gulp-sass'),
-		browserSync    = require('browser-sync'),
-		concat         = require('gulp-concat'),
-		uglify         = require('gulp-uglify'),
-		cleanCSS       = require('gulp-clean-css'),
-		rename         = require('gulp-rename'),
-		del            = require('del'),
-		imagemin       = require('gulp-imagemin'),
-		cache          = require('gulp-cache'),
-		autoprefixer   = require('gulp-autoprefixer'),
-		ftp            = require('vinyl-ftp'),
-		notify         = require("gulp-notify"),
-		rsync          = require('gulp-rsync');
+var gulp       = require('gulp'),
+gutil          = require('gulp-util' ),
+sass           = require('gulp-sass'),
+browserSync    = require('browser-sync'),
+concat         = require('gulp-concat'),
+uglify         = require('gulp-uglify'),
+cleanCSS       = require('gulp-clean-css'),
+rename         = require('gulp-rename'),
+del            = require('del'),
+imagemin       = require('gulp-imagemin'),
+cache          = require('gulp-cache'),
+autoprefixer   = require('gulp-autoprefixer'),
+ftp            = require('vinyl-ftp'),
+notify         = require("gulp-notify"),
+rsync          = require('gulp-rsync');
 
 // Пользовательские скрипты проекта
 
@@ -28,6 +28,9 @@ gulp.task('common-js', function() {
 gulp.task('js', ['common-js'], function() {
 	return gulp.src([
 		'app/libs/jquery/dist/jquery.min.js',
+		'app/libs/bootstrap/js/popper.min.js', // Берем jQuery
+		'app/libs/bootstrap/js/bootstrap.min.js', // Берем jQuery
+		'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js', // Берем Magnific Popup
 		'app/js/common.min.js', // Всегда в конце
 		])
 	.pipe(concat('scripts.min.js'))
@@ -54,7 +57,7 @@ gulp.task('sass', function() {
 	.pipe(autoprefixer(['last 15 versions']))
 	.pipe(cleanCSS()) // Опционально, закомментировать при отладке
 	.pipe(gulp.dest('app/css'))
-	.pipe(browserSync.reload({stream: true}));
+	.pipe(browserSync.stream());
 });
 
 gulp.task('watch', ['sass', 'js', 'browser-sync'], function() {
