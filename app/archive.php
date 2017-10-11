@@ -14,19 +14,21 @@ the_field('before', $taxonomy . '_' . $term_id); ?></p>
 		<div class="col-sm-9">
 			<div class="row">
 				<?php global $query_string; query_posts( $query_string . "&order=ASC" );
-				if (have_posts()) : while (have_posts()) : the_post(); get_template_part('parts/card-project'); endwhile;
-					else: echo '<div class="col"><p class="lead">Нет записей.</p></div>'; endif; ?>	 
-				</div>
-				<p><?php
-				$queried_objec = get_queried_object();
-				$taxonomy = $queried_object->taxonomy;
-				$term_id = $queried_object->term_id;
-				the_field('after', $taxonomy . '_' . $term_id); ?>		</p>
+				if (have_posts()) : while (have_posts()) : the_post();
+					get_template_part('parts/card-project');
+				endwhile;
+				else: echo '<div class="col"><p class="lead">Нет записей.</p></div>'; endif; ?>	 
 			</div>
-			<div class="col-sm-3">
-				<?php get_sidebar(); // подключаем sidebar.php ?>
-			</div>
+			<p><?php
+			$queried_objec = get_queried_object();
+			$taxonomy = $queried_object->taxonomy;
+			$term_id = $queried_object->term_id;
+			the_field('after', $taxonomy . '_' . $term_id); ?>		</p>
+		</div>
+		<div class="col-sm-3">
+			<?php get_sidebar(); // подключаем sidebar.php ?>
 		</div>
 	</div>
+</div>
 </div>
 <?php get_footer();?>
