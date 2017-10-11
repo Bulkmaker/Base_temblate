@@ -18,24 +18,24 @@ rsync          = require('gulp-rsync');
 
 gulp.task('common-js', function() {
 	return gulp.src([
-		'app/js/common.js',
+		'js/common.js',
 		])
 	.pipe(concat('common.min.js'))
 	.pipe(uglify())
-	.pipe(gulp.dest('app/js'));
+	.pipe(gulp.dest('js'));
 });
 
 gulp.task('js', ['common-js'], function() {
 	return gulp.src([
-		'app/libs/jquery/dist/jquery.min.js',
-		'app/libs/bootstrap/js/popper.min.js', // Берем jQuery
-		'app/libs/bootstrap/js/bootstrap.min.js', // Берем jQuery
-		'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js', // Берем Magnific Popup
-		'app/js/common.min.js', // Всегда в конце
+		'libs/jquery/dist/jquery.min.js',
+		'libs/bootstrap/js/popper.min.js', // Берем jQuery
+		'libs/bootstrap/js/bootstrap.min.js', // Берем jQuery
+		'libs/magnific-popup/dist/jquery.magnific-popup.min.js', // Берем Magnific Popup
+		'js/common.min.js', // Всегда в конце
 		])
 	.pipe(concat('scripts.min.js'))
 	// .pipe(uglify()) // Минимизировать весь js (на выбор)
-	.pipe(gulp.dest('app/js'))
+	.pipe(gulp.dest('js'))
 	.pipe(browserSync.reload({stream: true}));
 });
 
@@ -51,23 +51,23 @@ gulp.task('browser-sync', function() {
 });
 
 gulp.task('sass', function() {
-	return gulp.src('app/sass/**/*.sass')
+	return gulp.src('sass/**/*.sass')
 	.pipe(sass({outputStyle: 'expand'}).on("error", notify.onError()))
 	.pipe(rename({suffix: '.min', prefix : ''}))
 	.pipe(autoprefixer(['last 15 versions']))
 	.pipe(cleanCSS()) // Опционально, закомментировать при отладке
-	.pipe(gulp.dest('app/css'))
+	.pipe(gulp.dest('css'))
 	.pipe(browserSync.stream());
 });
 
 gulp.task('watch', ['sass', 'js', 'browser-sync'], function() {
-	gulp.watch('app/sass/**/*.sass', ['sass']);
-	gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['js']);
-	gulp.watch('app/*.html', browserSync.reload);
+	gulp.watch('sass/**/*.sass', ['sass']);
+	gulp.watch(['libs/**/*.js', 'js/common.js'], ['js']);
+	gulp.watch('*.html', browserSync.reload);
 });
 
 gulp.task('imagemin', function() {
-	return gulp.src('app/img/**/*')
+	return gulp.src('img/**/*')
 	.pipe(cache(imagemin()))
 	.pipe(gulp.dest('dist/img')); 
 });
@@ -75,20 +75,20 @@ gulp.task('imagemin', function() {
 gulp.task('build', ['removedist', 'imagemin', 'sass', 'js'], function() {
 
 	var buildFiles = gulp.src([
-		'app/*.html',
-		'app/.htaccess',
+		'*.html',
+		'.htaccess',
 		]).pipe(gulp.dest('dist'));
 
 	var buildCss = gulp.src([
-		'app/css/main.min.css',
+		'css/main.min.css',
 		]).pipe(gulp.dest('dist/css'));
 
 	var buildJs = gulp.src([
-		'app/js/scripts.min.js',
+		'js/scripts.min.js',
 		]).pipe(gulp.dest('dist/js'));
 
 	var buildFonts = gulp.src([
-		'app/fonts/**/*',
+		'fonts/**/*',
 		]).pipe(gulp.dest('dist/fonts'));
 
 });
