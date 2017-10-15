@@ -1,25 +1,31 @@
-	<div class="container">
-		<nav class="navbar navbar-expand-lg navbar-light">
-			<a class="navbar-brand" href="/">
-				<img src="img/logo.svg" width="100%" height="100%" class="d-inline-block align-top" alt="">
-			</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarsExample09">
-						<?php
-						wp_nav_menu( array(
-							'theme_location'	=> 'top',
-							'container' => false,
-							'menu_class'		=> 'navbar-nav text-md-center nav-justified w-100',
-							'fallback_cb'		=> '__return_false',
-							'items_wrap'		=> '<ul id="%1$s" class="%2$s">%3$s</ul>',
-							'depth'				=> 2,
-							'walker'			=> new bootstrap_4_walker_nav_menu()
-						) );
-						?>
-				<a href='#' class="button">Заказать звонок</a>
-				<span class="navbar-text phone"><i class="fa fa-phone text-success" aria-hidden="true"></i> 8 915 915-32-20</span>
+<div class="container">
+	<header>
+		<div class="row align-items-center">
+			<div class="col-lg-3 col-md-12 text-center  p-2">
+				<a href="/"><img src="/wp-content/themes/galich-dom/img/header-object.png" class='img-fluid' alt=""></a> 
 			</div>
-		</nav>
-	</div>
+			<div class="col-lg-4 col-md-12 text-center">
+				<div class="row align-items-center">
+					<div class="col-sm-6 text-center p-1">
+						<a href='/aktcyi-i-skidki/' class='h3' >Акции</a>
+					</div>
+					<div class="col-sm-6 text-center p-1">
+						<a href='#zvonok' class="btn btn-outline-success btn-block">Заказать звонок</a><hr>
+						<a href='#' class="btn btn-outline-success  btn-block">Расчет стоимости</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-5 col-md-12">
+				<div class="row align-items-center">
+					<div class="col-sm-6 text-right contacts">
+						<span class="navbar-text phone"><i class="fa fa-phone text-success" aria-hidden="true"></i> 8 (987) 654-32-12</span><br>
+					</div>
+					<div class="col-sm-6 text-right contacts">
+						<span class="navbar-text phone"><i class="fa fa-envelope text-success" aria-hidden="true"></i> <a href="mailto:mail@mail.ru">mail@mail.ru</a></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+</div>
+<?php get_template_part('parts/head-menu'); // подключаем меню и всю верхнюю частьъ ?>
